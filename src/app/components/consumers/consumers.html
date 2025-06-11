@@ -1,0 +1,45 @@
+<form [formGroup]="form" class="form-card">
+  <div class="section-header">
+    <span class="material-icons"></span>
+    <span>CONSUMER INFORMATION</span>
+  </div>
+
+  <div class="main-content">
+    <div class="form-fields">
+      <div class="form-group">
+        <label for="consumerType">Consumer Type *</label>
+        <select id="consumerType" formControlName="consumer" class="form-control">
+          <option value="">- Select -</option>
+          <option value="firms">Trust/Company/Others</option>
+          <option value="rely">Co-applicant</option>
+        </select>
+        <div class="error-message" *ngIf="form.controls['consumer']?.invalid && form.controls['consumer']?.touched">
+          This field is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-uploads">
+      <div class="img-upload">
+        <div class="img-preview-box">
+          <img [src]="photoPreview || 'assets/default-profile.png'" alt="Photo Preview" class="img-avatar">
+        </div>
+        <label class="upload-label" for="photoInput">
+         Upload File
+        </label>
+        <input id="photoInput" type="file" accept="image/*" (change)="filechange($event,'photo')" hidden>
+        <div class="img-note">Allows only jpg/png files upto 500kb size.</div>
+      </div>
+      <div class="img-upload" style="margin-top: 32px;">
+        <div class="img-preview-box signature-box">
+          <img [src]="signPreview || 'assets/default-signature.png'" alt="Signature Preview" class="img-signature">
+        </div>
+        <label class="upload-label" for="signInput">
+           Upload File
+        </label>
+        <input id="signInput" type="file" accept="image/*" (change)="filechange($event,'signature')" hidden>
+        <div class="img-note">Allows only jpg/png files upto 500kb size.</div>
+      </div>
+    </div>
+  </div>
+   <app-consumer-address [group]="form"></app-consumer-address>
+</form>

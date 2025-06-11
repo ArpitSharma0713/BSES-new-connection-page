@@ -1,0 +1,129 @@
+.form-card {
+  background: #fafbfc;
+  border-radius: 8px;
+  padding: 24px 30px 36px 30px;
+  box-shadow: 0 2px 8px rgba(33, 37, 41, 0.07);
+  margin: 32px auto;
+  max-width: 98vw;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  background: #f6f8fa;
+  padding: 15px 24px;
+  border-radius: 7px;
+  margin-bottom: 32px;
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: #232323;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.section-header .material-icons {
+  margin-right: 12px;
+  font-size: 1.35em;
+  color: #3a4c6e;
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+.form-fields {
+  flex: 2;
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 1.08rem;
+  border-radius: 4px;
+  border: 1px solid #dde0e4;
+  background: #fff;
+  margin-top: 8px;
+}
+
+.error-message {
+  color: #e53935;
+  font-size: 0.98em;
+  margin-top: 7px;
+}
+
+.form-uploads {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img-preview-box {
+  width: 110px;
+  height: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #e0e2e6;
+  border-radius: 13px;
+  background: #fff;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.img-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.signature-box {
+  width: 210px;
+  height: 66px;
+}
+
+.img-signature {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.upload-label {
+  cursor: pointer;
+  background: #2070ee;
+  color: #fff;
+  border-radius: 7px;
+  padding: 8px 22px;
+  font-size: 1em;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 4px;
+  box-shadow: 0 1px 3px rgba(33, 37, 41, 0.10);
+  transition: background 0.2s;
+}
+
+.upload-label:hover {
+  background: #1762cc;
+}
+
+.img-note {
+  font-size: 0.96em;
+  color: #888;
+  margin-top: 4px;
+  text-align: center;
+  max-width: 170px;
+}
