@@ -1,0 +1,38 @@
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+    justify-content: flex-end;
+    align-items: center;
+    background: rgba(255,255,255,0.95);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.nav-list li {
+    transition: transform 0.2s;
+}
+
+.nav-list li:hover {
+    transform: translateY(-2px) scale(1.05);
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: #222;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-list a:hover,
+.nav-list a:focus {
+    background: #f0f0f0;
+    color: #0078d4;
+}

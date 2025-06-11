@@ -44,5 +44,9 @@ export class Consumers {
   get consumer() {
   return this.form.get('consumer');
 }
+  nextStep() {
+    return console.log("working");
+    alert("Next step functionality is not implemented yet.");
 
+  }
 }
