@@ -1,0 +1,46 @@
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  background: #f5f7fa;
+}
+
+.video-sidebar {
+  width: 250px;
+  background: #181818;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 32px 0;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.07);
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar-video {
+  width: 96%;         /* Fit nicely in sidebar */
+  max-width: 320px;
+  height: 240px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  background: #111;
+  object-fit: cover;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px 0;         
+  display: flex;
+  flex-direction: column;
+  align-items: center;    
+  justify-content: flex-start;
+  gap: 80px;
+}
+
+
+.video-sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
