@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ConsumerAddress } from '../consumer-address/consumer-address';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-consumers',
@@ -15,7 +16,7 @@ export class Consumers {
   photoPreview: string | null = null;
   signPreview: string | null = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private cd: ChangeDetectorRef) {
     this.form = this.fb.group({
       consumer: ["", Validators.required],
       photo: [null, Validators.required],
@@ -38,6 +39,7 @@ export class Consumers {
       if (type == "photo") this.photoPreview = reader.result as string;
       if (type == "signature") this.signPreview = reader.result as string;
       this.form.patchValue({ [type]: file });
+      this.cd.detectChanges();
     };
     reader.readAsDataURL(file);
   }
@@ -45,8 +47,8 @@ export class Consumers {
   return this.form.get('consumer');
 }
   nextStep() {
-    return console.log("working");
-    alert("Next step functionality is not implemented yet.");
+    return alert("Next step is not implemented yet.");
+
 
   }
 }

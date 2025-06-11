@@ -24,7 +24,7 @@
           <img [src]="photoPreview || 'assets/default-profile.png'" alt="Photo Preview" class="img-avatar">
         </div>
         <label class="upload-label" for="photoInput">
-         Upload File
+         Upload Photo
         </label>
         <input id="photoInput" type="file" accept="image/*" (change)="filechange($event,'photo')" hidden>
         <div class="img-note">Allows only jpg/png files upto 500kb size.</div>
@@ -34,7 +34,7 @@
           <img [src]="signPreview || 'assets/default-signature.png'" alt="Signature Preview" class="img-signature">
         </div>
         <label class="upload-label" for="signInput">
-           Upload File
+           Upload signature
         </label>
         <input id="signInput" type="file" accept="image/*" (change)="filechange($event,'signature')" hidden>
         <div class="img-note">Allows only jpg/png files upto 500kb size.</div>
