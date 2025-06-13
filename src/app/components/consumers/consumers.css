@@ -1,14 +1,12 @@
 .form-card {
   width: 92vw;
-  max-width: 1100px;    /* You can set this to 1000px or more as you like */
+  max-width: 1200px;    /* You can set this to 1000px or more as you like */
   margin: 32px auto;
   background: #fafbfc;
   border-radius: 8px;
   padding: 24px 30px 36px 30px;
   box-shadow: 0 2px 8px rgba(33, 37, 41, 0.07);
 }
-
-
 .section-header {
   display: flex;
   align-items: center;

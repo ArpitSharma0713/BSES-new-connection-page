@@ -3,11 +3,13 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ConsumerAddress } from '../consumer-address/consumer-address';
 import { ChangeDetectorRef } from '@angular/core';
+import { PropertyWrite } from '@angular/compiler';
+import { ConsumersSupply } from '../consumers-supply/consumers-supply';
 
 @Component({
   selector: 'app-consumers',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule,ConsumerAddress],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule,ConsumerAddress,ConsumersSupply],
   templateUrl: './consumers.html',
   styleUrls: ['./consumers.css']
 })
@@ -21,10 +23,17 @@ export class Consumers {
       consumer: ["", Validators.required],
       photo: [null, Validators.required],
       sign: [null, Validators.required],
-      addressLine1: ['', Validators.required],
-      addressLine2: [''],
-      city: ['', Validators.required],
-      postalCode: ['', Validators.required]
+      property: ['', Validators.required],
+      KhasraNo: ['',Validators.required],
+      BlockNo: ['', Validators.required],
+      floor: ['', Validators.required],
+      premise: ['', Validators.required],
+      other_detail: ['', Validators.required],
+      street: ['', Validators.required],
+      Area: ['', Validators.required],
+      Landmark: ['', Validators.required],
+      Landmark_Details: ['', Validators.required],
+      City_Postal_Code: ['', Validators.required],
     });
   }
 
