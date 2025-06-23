@@ -1,10 +1,27 @@
 <div class="form-section-card">
   <div class="section-header">
     <span>
-      Where Supply is Required<br><br>
+      WHERE SUPPLY IS REQUIRED<br><br>
     </span>
   </div>
   <div [formGroup]="group" class="address-fields">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="Nearby">Near By*</label>
+        <input id="Nearby" type="text" formControlName="Nearby" class="form-control" placeholder="Near By">
+        <div class="error-message" *ngIf="group.get('Nearby')?.invalid && group.get('Nearby')?.touched">
+          This field is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Division">Division*</label>
+        <input id="Division" type="text" formControlName="Division" class="form-control" placeholder="Division">
+        <div class="error-message" *ngIf="group.get('Division')?.invalid && group.get('Division')?.touched">
+          This field is required.
+        </div>
+      </div>
+    </div>
+
     <div class="form-row">
       <div class="form-group">
         <label for="property">Property *</label>
@@ -47,6 +64,7 @@
         </div>
       </div>
     </div>
+
     <div class="form-row">
       <div class="form-group">
         <label for="premise">Premise *</label>
@@ -77,6 +95,7 @@
         </div>
       </div>
     </div>
+
     <div class="form-row">
       <div class="form-group">
         <label for="Area">Area *</label>
@@ -98,17 +117,29 @@
           This field is required.
         </div>
       </div>
-            <div class="form-group">
+      <div class="form-group">
         <label for="Landmark_Details">Landmark Details *</label>
         <input id="Landmark_Details" type="text" formControlName="Landmark_Details" class="form-control" placeholder="Landmark Details">
         <div class="error-message" *ngIf="group.get('Landmark_Details')?.invalid && group.get('Landmark_Details')?.touched">
           This field is required.
         </div>
-      </div>  
+      </div>
       <div class="form-group">
         <label for="City_Postal_Code">City Postal Code *</label>
         <input id="City_Postal_Code" type="text" formControlName="City_Postal_Code" class="form-control" placeholder="City Postal Code">
         <div class="error-message" *ngIf="group.get('City_Postal_Code')?.invalid && group.get('City_Postal_Code')?.touched">
+          This field is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group" style="flex-direction: row; align-items: center;">
+        <label class="imp" style="margin-right:10px;">Do you have Open RoofTop Area?</label>
+        <input type="radio" formControlName="RoofTop" value="yes" id="rooftopYes">
+        <label for="rooftopYes" style="margin-right:10px;">Yes</label>
+        <input type="radio" formControlName="RoofTop" value="no" id="rooftopNo">
+        <label for="rooftopNo">No</label>
+        <div class="error-message" *ngIf="group.get('RoofTop')?.invalid && group.get('RoofTop')?.touched">
           This field is required.
         </div>
       </div>

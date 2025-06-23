@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ConsumerAddress } from '../consumer-address/consumer-address';
 import { ChangeDetectorRef } from '@angular/core';
@@ -17,6 +17,14 @@ export class Consumers {
   form!: FormGroup;
   photoPreview: string | null = null;
   signPreview: string | null = null;
+  cameraOpen = false;
+  captureType: 'photo' | 'signature' = 'photo';
+  captured = false;
+  mediaStream: MediaStream | null = null;
+
+  @ViewChild('video') video!: ElementRef<HTMLVideoElement>;
+  @ViewChild('canvas') canvas!: ElementRef<HTMLCanvasElement>;
+
 
   constructor(private fb: FormBuilder,private cd: ChangeDetectorRef) {
     this.form = this.fb.group({
@@ -34,7 +42,61 @@ export class Consumers {
       Landmark: ['', Validators.required],
       Landmark_Details: ['', Validators.required],
       City_Postal_Code: ['', Validators.required],
+      Nearby: ['', Validators.required],
+      Division: ['', Validators.required],
+      RoofTop: ['', Validators.required],
     });
+  }
+  async openCamera(type: 'photo' | 'signature') {
+    this.captureType = type;
+    this.captured = false;
+    this.cameraOpen = true;
+    try {
+      this.mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
+      setTimeout(() => { 
+        this.video.nativeElement.srcObject = this.mediaStream!;
+        this.video.nativeElement.play();
+      });
+    } catch (err) {
+      alert('Unable to access camera: ' + err);
+      this.closeCamera();
+    }
+  }
+
+  snap() {
+    const videoEl = this.video.nativeElement;
+    const canvasEl = this.canvas.nativeElement;
+    canvasEl.width = videoEl.videoWidth;
+    canvasEl.height = videoEl.videoHeight;
+    canvasEl.getContext('2d')!.drawImage(videoEl, 0, 0, canvasEl.width, canvasEl.height);
+    this.captured = true;
+    videoEl.pause();
+  }
+
+  retake() {
+    this.captured = false;
+    this.video.nativeElement.play();
+  }
+
+  saveCapture() {
+    const dataUrl = this.canvas.nativeElement.toDataURL('image/png');
+    if (this.captureType === 'photo') {
+      this.photoPreview = dataUrl;
+      this.form.patchValue({ photo: dataUrl });
+    } else {
+      this.signPreview = dataUrl;
+      this.form.patchValue({ sign: dataUrl });
+    }
+    this.closeCamera();
+  }
+
+  closeCamera() {
+    this.cameraOpen = false;
+    this.captured = false;
+    if (this.mediaStream) {
+      this.mediaStream.getTracks().forEach(track => track.stop());
+      this.mediaStream = null;
+    }
   }
 
   filechange(event: Event, type: "photo" | "signature") {
@@ -60,4 +122,9 @@ export class Consumers {
 
 
   }
+  triggerCapture(inputId: string) {
+  const input = document.getElementById(inputId) as HTMLInputElement;
+  if (input) input.click();
+}
+
 }

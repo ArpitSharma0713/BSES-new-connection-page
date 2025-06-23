@@ -19,6 +19,7 @@
       </div>
     </div>
     <div class="form-uploads">
+      <!-- PHOTO UPLOAD -->
       <div class="img-upload">
         <div class="img-preview-box">
           <img [src]="photoPreview || 'assets/default-profile.png'" alt="Photo Preview" class="img-avatar">
@@ -27,8 +28,10 @@
          Upload Photo
         </label>
         <input id="photoInput" type="file" accept="image/*" (change)="filechange($event,'photo')" hidden>
+        <button type="button" class="upload-label" (click)="openCamera('photo')">📸 Capture Photo</button>
         <div class="img-note">Allows only jpg/png files upto 500kb size.</div>
       </div>
+      <!-- SIGNATURE UPLOAD -->
       <div class="img-upload" style="margin-top: 32px;">
         <div class="img-preview-box signature-box">
           <img [src]="signPreview || 'assets/default-signature.png'" alt="Signature Preview" class="img-signature">
@@ -37,10 +40,27 @@
            Upload signature
         </label>
         <input id="signInput" type="file" accept="image/*" (change)="filechange($event,'signature')" hidden>
+        <button type="button" class="upload-label" (click)="openCamera('signature')">📸 Capture sign</button>
         <div class="img-note">Allows only jpg/png files upto 500kb size.</div>
       </div>
     </div>
   </div>
+
+  <!-- SINGLE CAMERA MODAL -->
+  <div class="camera-modal" *ngIf="cameraOpen">
+    <div class="modal-content">
+      <video #video autoplay></video>
+      <canvas #canvas style="display:none"></canvas>
+      <div class="camera-actions">
+        <button type="button" *ngIf="!captured" (click)="snap()">Click</button>
+        <button type="button" *ngIf="captured" (click)="retake()">Retake</button>
+        <button type="button" *ngIf="captured" (click)="saveCapture()">Save</button>
+        <button type="button" (click)="closeCamera()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
   <app-consumer-address [group]="form"></app-consumer-address>
   <app-consumers-supply [group]="form"></app-consumers-supply>
 </form>
+

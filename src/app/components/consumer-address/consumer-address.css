@@ -28,7 +28,7 @@
 .form-row {
   display: flex;
   gap: 24px;
-  margin-bottom: 0; /* If you want more space, adjust here */
+  margin-bottom: 0; 
 }
 
 .form-group {
@@ -53,4 +53,10 @@
   color: #e53935;
   font-size: 0.95em;
   margin-top: 6px;
+}
+.imp {
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: #2d3a4a;
 }
