@@ -39,12 +39,12 @@
   border-radius: 0.5rem;
   padding: 0.5rem 2rem;
   font-weight: 500;
-  background: #007bff;
+  background: #ff0000;
   border: none;
 }
 
 .btn-primary:hover, .btn-primary:focus {
-  background: #0056b3;
+  background: #b30000;
 }
 
 @media (max-width: 992px) {
@@ -66,7 +66,7 @@
 .upload-label {
   display: inline-block;
   cursor: pointer;
-  background: #007bff;
+  background: #ff0000;
   color: #fff;
   padding: 0.5rem 1.25rem;
   border-radius: 0.5rem;
@@ -75,7 +75,7 @@
   transition: background 0.2s;
 }
 .upload-label:hover {
-  background: #0056b3;
+  background: #b30000;
 }
 .img-preview-box {
   width: 110px;

@@ -3,21 +3,85 @@
     <span class="material-icons"></span>
     <span>CONSUMER INFORMATION</span>
   </div>
-
   <div class="main-content">
     <div class="form-fields">
       <div class="form-group">
         <label for="consumerType">Consumer Type *</label>
         <select id="consumerType" formControlName="consumer" class="form-control">
-          <option value="">- Select -</option>
-          <option value="firms">Trust/Company/Others</option>
-          <option value="rely">Co-applicant</option>
+          <option value="" selected disabled>- Select -</option>
+          <option value="individual">Individual</option>
+          <option value="Trust/Company/Others">Trust/Company/Others</option>
+          <option value="Co-applicant">Co-applicant</option>
         </select>
         <div class="error-message" *ngIf="form.controls['consumer']?.invalid && form.controls['consumer']?.touched">
           This field is required.
         </div>
       </div>
     </div>
+    <div *ngIf=" form.controls['consumer']?.value === 'individual'" class="form-fields">
+      <div class="form-group">
+        <label for="consumerName">Consumer Name *</label>
+        <input id="consumerName" type="text" formControlName="consumer_name" class="form-control" placeholder="Enter Consumer Name">
+        <div class="error-message" *ngIf="form.controls['consumer_name']?.invalid && form.controls['consumer_name']?.touched">
+          Consumer Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="mobile">Mobile No. *</label>
+        <input id="mobile" type="text" formControlName="mobile" class="form-control" placeholder="Enter Mobile No.">
+        <div class="error-message" *ngIf="form.controls['mobile']?.invalid && form.controls['mobile']?.touched">
+          Mobile No. is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email ID</label>
+        <input id="email" type="email" formControlName="email" class="form-control" placeholder="Enter Email ID">
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input id="dob" type="date" formControlName="dob" class="form-control">
+        <div class="error-message" *ngIf="form.controls['dob']?.invalid && form.controls['dob']?.touched">
+          Date of Birth is required.
+        </div>
+      </div>
+  </div>
+  <div *ngIf=" form.controls['consumer']?.value ==='Trust/Company/Others'" class="form-fields">
+      <div class="form-group">
+        <label for="firmName">Firm Name *</label>
+        <input id="firmName" type="text" formControlName="firm_name" class="form-control" placeholder="Enter Firm Name">
+        <div class="error-message" *ngIf="form.controls['firm_name']?.invalid && form.controls['firm_name']?.touched">
+          Firm Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="firmMobile">Mobile No. *</label>
+        <input id="firmMobile" type="text" formControlName="firm_mobile" class="form-control" placeholder="Enter Mobile No.">
+        <div class="error-message" *ngIf="form.controls['firm_mobile']?.invalid && form.controls['firm_mobile']?.touched">
+          Mobile No. is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="firmEmail">Email ID</label>
+        <input id="firmEmail" type="email" formControlName="firm_email" class="form-control" placeholder="Enter Email ID">
+      </div>
+    </div>
+  <div *ngIf=" form.controls['consumer']?.value ==='Co-applicant'" class="form-fields">
+      <div class="form-group">
+        <label for="coapplicantName">Co-applicant Name *</label>
+        <input id="coapplicantName" type="text" formControlName="coapplicant_name" class="form-control" placeholder="Enter Co-applicant Name">
+        <div class="error-message" *ngIf="form.controls['coapplicant_name']?.invalid && form.controls['coapplicant_name']?.touched">
+          Co-applicant Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="coapplicantMobile">Mobile No. *</label>
+        <input id="coapplicantMobile" type="text" formControlName="coapplicant_mobile" class="form-control" placeholder="Enter Mobile No.">
+        <div class="error-message" *ngIf="form.controls['coapplicant_mobile']?.invalid && form.controls['coapplicant_mobile']?.touched">
+          Mobile No. is required.
+        </div>
+      </div>
+  </div>
+
     <div class="form-uploads">
       <div class="img-upload">
         <div class="img-preview-box">
@@ -44,7 +108,6 @@
     </div>
   </div>
 
-
   <div class="camera-modal" *ngIf="cameraOpen">
     <div class="modal-content">
       <video #video autoplay></video>
@@ -57,10 +120,8 @@
       </div>
     </div>
   </div>
-
-  <app-consumer-address [group]="form"></app-consumer-address>
-  <app-consumers-supply [group]="form"></app-consumers-supply>
-  <app-consumer-cd [group]="form"></app-consumer-cd>
-  <app-consumer-id-proofs [group]="form"></app-consumer-id-proofs>
+    <app-consumer-address [group]="form"></app-consumer-address>
+    <app-consumers-supply [group]="form"></app-consumers-supply>
+    <app-consumer-cd [group]="form"></app-consumer-cd>
+    <app-consumer-id-proofs [group]="form"></app-consumer-id-proofs>
 </form>
-

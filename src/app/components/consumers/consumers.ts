@@ -31,6 +31,15 @@ export class Consumers {
   constructor(private fb: FormBuilder,private cd: ChangeDetectorRef) {
     this.form = this.fb.group({
       consumer: ["", Validators.required],
+      consumer_name: ["", Validators.required],
+      mobile: ["", [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      email: ["", [Validators.required, Validators.email]],
+      firm_name: ["", Validators.required],
+      firm_mobile: ["", [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      firm_email: ["", [Validators.required, Validators.email]],
+      coapplicant_name:["",Validators.required],
+      coapplicant_mobile: ["", [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      dob: ["", Validators.required],
       photo: [null, Validators.required],
       sign: [null, Validators.required],
       property: ['', Validators.required],
