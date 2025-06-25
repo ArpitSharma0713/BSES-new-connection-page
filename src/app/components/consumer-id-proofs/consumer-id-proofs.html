@@ -1,0 +1,84 @@
+<div [formGroup]="group">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="card document-card shadow-sm">
+          <div class="card-header bg-white border-0 pb-0">
+            <h4 class="section-title mb-0">
+              <i class="bi bi-file-earmark-text-fill me-2"></i> IMPORTANT DOCUMENTS
+            </h4>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-warning important-note mb-4" role="alert">
+              <strong>Important Note :</strong>
+              <ul class="mb-0">
+                <li>For ownership proof - Sale Deed/Conveyance Deed/Allotment Letter/Valid Lease agreement/Mutation certificate issued by Govt authority/sub division agreement/GPA.</li>
+                <li>Ensure all pages (front and back side) of the relevant document are uploaded.</li>
+                <li>All uploaded documents should be clear & readable.</li>
+                <li>Uploaded documents should be in Pdf format. Ownership proof document within size limit of 25 MB & other documents within size limit of 5 MB.</li>
+              </ul>
+            </div>
+            <div class="mb-1 fw-bold" style="font-size: 1.05rem;">
+              <span class="me-2" style="font-size:1.1rem; vertical-align:middle;">&#9632;</span>
+              Identification Proof <span class="fw-normal">(Anyone in PDF Format)</span>
+            </div>
+            <div class="row align-items-end g-3 mb-3">
+              <div class="col-md-4">
+                <label for="idType" class="form-label fw-bold">ID Proof Type <span class="text-danger">*</span></label>
+                <select class="form-control" id="idType" formControlName="idprooftype">
+                  <option selected disabled>-Select-</option>
+                  <option value="aadhaar">Aadhaar Card</option>
+                  <option value="pan">PAN Card</option>
+                  <option value="passport">Passport</option>
+                  <option value="voter">Voter ID</option>
+                  <option value="license">Driving License</option>
+                </select>
+                <div class="form-text text-warning fw-bold mt-2">** Upload front and back side of ID Proof.</div>
+              </div>
+              <div class="col-md-4">
+                <label for="idNumber" class="form-label fw-bold">ID Proof Doc No. <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="idNumber" placeholder="Enter ID number" formControlName="id_Proof_Doc_No" >
+              </div>
+              <div class="col-md-4 pt-3 pt-md-0 d-flex align-items-center">
+                        <div class="img-preview-box">
+                          <img [src]="idfilePreview || 'assets/pdf.png'" alt="Pdf Preview" class="img-avatar">
+                        </div>
+                <input class="form-control d-none" type="file" id="idFile" accept="application/pdf" (change)="filechange($event,'idFile')" hidden>
+                <label for="idFile" class="upload-label mb-0 ms-md-3 w-100" style="max-width:180px;" >
+                  <i class="bi bi-cloud-upload"></i> Upload File
+                </label>
+              </div>
+            </div>
+            <div class="mb-1 fw-bold" style="font-size: 1.05rem;">
+              <span class="me-2" style="font-size:1.1rem; vertical-align:middle;">&#9632;</span>
+              Ownership Proof <span class="fw-normal">(Anyone in PDF Format)<span class="text-danger">*</span></span>
+            </div>
+            <div class="row align-items-end g-3 mb-3">
+              <div class="col-md-4">
+                <label for="ownershipType" class="form-label fw-bold">Ownership Proof <span class="text-danger">*</span></label>
+                <select class="form-control" id="ownershipType" formControlName="ownershipprooftype">
+                  <option selected disabled>-Select-</option>
+                  <option value="sale-deed">Sale Deed</option>
+                  <option value="allotment">Allotment Letter</option>
+                  <option value="lease">Lease Agreement</option>
+                  <option value="mutation">Mutation Certificate</option>
+                </select>
+                <div class="form-text text-warning fw-bold mt-2">** Upload front and back side of Ownership Proof.</div>
+              </div>
+              <div class="col-md-4"></div>
+              <div class="col-md-4 pt-3 pt-md-0 d-flex align-items-center">
+                <input class="form-control d-none" type="file" id="ownershipFile" accept="application/pdf" formControlName="ownershipproof" (change)="filechange($event,'ownershipFile')" hidden>
+                        <div class="img-preview-box">
+                          <img [src]="ownershipPreview || 'assets/pdf.png'" alt="Pdf Preview" class="img-avatar">
+                        </div>
+                <label for="ownershipFile" class="upload-label mb-0 ms-md-3 w-100" style="max-width:180px;">
+                  <i class="bi bi-cloud-upload"></i> Upload File
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

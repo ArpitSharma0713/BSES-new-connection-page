@@ -5,11 +5,13 @@ import { ConsumerAddress } from '../consumer-address/consumer-address';
 import { ChangeDetectorRef } from '@angular/core';
 import { PropertyWrite } from '@angular/compiler';
 import { ConsumersSupply } from '../consumers-supply/consumers-supply';
+import { ConsumerCD } from '../consumer-cd/consumer-cd';
+import { ConsumerIDProofs } from '../consumer-id-proofs/consumer-id-proofs';
 
 @Component({
   selector: 'app-consumers',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule,ConsumerAddress,ConsumersSupply],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule,ConsumerAddress,ConsumersSupply,ConsumerCD,ConsumerIDProofs],
   templateUrl: './consumers.html',
   styleUrls: ['./consumers.css']
 })
@@ -45,6 +47,11 @@ export class Consumers {
       Nearby: ['', Validators.required],
       Division: ['', Validators.required],
       RoofTop: ['', Validators.required],
+      idprooftype:['',Validators.required],
+      idproof:['',Validators.required],
+      id_Proof_Doc_No:['',Validators.required],
+      ownershipprooftype:['',Validators.required],
+      ownershipproof:['',Validators.required]
     });
   }
   async openCamera(type: 'photo' | 'signature') {
@@ -99,7 +106,7 @@ export class Consumers {
     }
   }
 
-  filechange(event: Event, type: "photo" | "signature") {
+  filechange(event: Event, type: "photo" | "signature" ) {
     const input = event.target as HTMLInputElement;
     if (!input.files || input.files.length == 0) {
       return;

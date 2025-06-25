@@ -19,7 +19,6 @@
       </div>
     </div>
     <div class="form-uploads">
-      <!-- PHOTO UPLOAD -->
       <div class="img-upload">
         <div class="img-preview-box">
           <img [src]="photoPreview || 'assets/default-profile.png'" alt="Photo Preview" class="img-avatar">
@@ -27,11 +26,10 @@
         <label class="upload-label" for="photoInput">
          Upload Photo
         </label>
-        <input id="photoInput" type="file" accept="image/*" (change)="filechange($event,'photo')" hidden>
+        <input id="photoInput" type="file" accept="image/*" (change)="filechange($event,'photo')" hidden formControlName="photo">
         <button type="button" class="upload-label" (click)="openCamera('photo')">📸 Capture Photo</button>
         <div class="img-note">Allows only jpg/png files upto 500kb size.</div>
       </div>
-      <!-- SIGNATURE UPLOAD -->
       <div class="img-upload" style="margin-top: 32px;">
         <div class="img-preview-box signature-box">
           <img [src]="signPreview || 'assets/default-signature.png'" alt="Signature Preview" class="img-signature">
@@ -39,14 +37,14 @@
         <label class="upload-label" for="signInput">
            Upload signature
         </label>
-        <input id="signInput" type="file" accept="image/*" (change)="filechange($event,'signature')" hidden>
+        <input id="signInput" type="file" accept="image/*" (change)="filechange($event,'signature')" hidden formControlName="sign">
         <button type="button" class="upload-label" (click)="openCamera('signature')">📸 Capture sign</button>
         <div class="img-note">Allows only jpg/png files upto 500kb size.</div>
       </div>
     </div>
   </div>
 
-  <!-- SINGLE CAMERA MODAL -->
+
   <div class="camera-modal" *ngIf="cameraOpen">
     <div class="modal-content">
       <video #video autoplay></video>
@@ -62,5 +60,7 @@
 
   <app-consumer-address [group]="form"></app-consumer-address>
   <app-consumers-supply [group]="form"></app-consumers-supply>
+  <app-consumer-cd [group]="form"></app-consumer-cd>
+  <app-consumer-id-proofs [group]="form"></app-consumer-id-proofs>
 </form>
 
